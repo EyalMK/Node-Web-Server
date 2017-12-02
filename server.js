@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+// Key value port for Heroku. Run port 3000 if localhost.
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -24,9 +26,9 @@ app.use((request, response, next) => {
 });
 
 // Maintenance page. Redirects all pages to a maintenance page.
-app.use((request, response, next) => {
-	response.render('maintenance.hbs');
-});
+// app.use((request, response, next) => {
+// 	response.render('maintenance.hbs');
+// });
 
 // Help.html
 app.use(express.static(__dirname + '/public'));
@@ -68,6 +70,7 @@ app.get('/bad', (request, response) => {
 
 
 // Bind app to a port on our machine. 2nd argument function is optional.
-app.listen(3000, () => {
-	console.log('Server is up and running on port 3000');
+// Dynamic port for Heroku
+app.listen(port, () => {
+	console.log(`Server is up and running on port ${port}`);
 });
