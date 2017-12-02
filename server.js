@@ -18,8 +18,10 @@ app.use((request, response, next) => {
 
 	console.log(log);
 	fs.appendFile('server.log', log + '\n', (err) => {
-		if (err) throw err;
-		console.log('Unable to append data.');
+		if (err)  {
+			throw err;
+			console.log('Unable to append data.');
+		}
 	});
 	// App can't continue if next isn't called.
 	next();
@@ -58,6 +60,13 @@ app.get('/', (request, response) => {
 app.get('/about', (request, response) => {
 	response.render('about.hbs', {
 		pageTitle: 'About Page',
+
+	});
+});
+
+app.get('/projects', (request, response) => {
+	response.render('projects.hbs', {
+		pageTitle: 'Projects Page',
 
 	});
 });
