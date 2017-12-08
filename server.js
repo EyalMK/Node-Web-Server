@@ -52,6 +52,7 @@ app.get('/', (request, response) => {
 	response.render('home.hbs', {
 		pageTitle: 'Home Page',
 		welcomeMsg: 'Welcome to the root file!',
+		title: 'Eldorado - Home'
 	});
 });
 
@@ -60,6 +61,7 @@ app.get('/', (request, response) => {
 app.get('/about', (request, response) => {
 	response.render('about.hbs', {
 		pageTitle: 'About Page',
+		title: 'Eldorado - About'
 
 	});
 });
@@ -67,6 +69,7 @@ app.get('/about', (request, response) => {
 app.get('/projects', (request, response) => {
 	response.render('projects.hbs', {
 		pageTitle: 'Projects Page',
+		title: 'Eldorado - Projects'
 
 	});
 });
